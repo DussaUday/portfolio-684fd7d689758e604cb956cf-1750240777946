@@ -1,0 +1,200 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>hello</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+        </head>
+        <body class="light">
+          <link rel="preload" as="image" href="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240760/portfolios/zi8rhubdp487pgq5i8rs.jpg"/><link rel="preload" as="image" href="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240747/portfolios/vnz9gomcn127iajcnkag.jpg"/><link rel="preload" as="image" href="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240771/portfolios/cly8eahijvlbhk0vhrhj.jpg"/><div class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300"><header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 sticky top-0 z-50 shadow-lg" style="transform:translateY(-100px)"><div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center"><h1 class="text-2xl font-extrabold tracking-tight mb-2 sm:mb-0">hello</h1><nav class="flex flex-wrap justify-center sm:justify-end items-center gap-4 sm:gap-6"><button class="hover:text-blue-200 transition-colors duration-200">About</button><button class="hover:text-blue-200 transition-colors duration-200">Skills</button><button class="hover:text-blue-200 transition-colors duration-200">Projects</button><button class="hover:text-blue-200 transition-colors duration-200">Certificates</button><button class="hover:text-blue-200 transition-colors duration-200">Contact</button><button class="theme-button text-xl p-2 rounded-full hover:bg-blue-700 transition-all duration-200" aria-label="Toggle theme"><i class="fas fa-moon"></i></button></nav></div></header><main class="container mx-auto px-4 py-8"><section id="profile" class="mb-12" style="opacity:0;transform:translateY(50px)"><div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl transform hover:scale-[1.02] transition-transform duration-300"><h2 class="text-3xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">About Me</h2><div class="flex flex-col md:flex-row items-center gap-6"><img src="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240760/portfolios/zi8rhubdp487pgq5i8rs.jpg" alt="Profile" class="w-32 h-32 rounded-full object-cover border-4 border-blue-500 shadow-md"/><div class="text-center md:text-left"><h3 class="text-2xl font-semibold mb-2">hello</h3><p class="mb-4 text-gray-600 dark:text-gray-300">
+// client/src/templates/template2.jsx
+import React from &#x27;react&#x27;;
+
+export function Template2({ components, theme }) {
+  const {
+    name = &#x27;Your Name&#x27;,
+    bio = &#x27;Tell us about yourself...&#x27;,
+    email = &#x27;your.email@example.com&#x27;,
+    github = &#x27;https://github.com/yourusername&#x27;,
+    linkedin = &#x27;https://linkedin.com/in/yourusername&#x27;,
+    whatsapp = &#x27;https://wa.me/yournumber&#x27;,
+    profilePic,
+    skills = [],
+    projects = [],
+    certificates = [],
+  } = components;
+
+  const handleImageError = (e, type, index = null) =&gt; {
+    console.error(`Failed to load ${type} image:`, e.target.src);
+    e.target.style.display = &#x27;none&#x27;;
+    const parent = e.target.parentElement;
+    const fallback = document.createElement(&#x27;div&#x27;);
+    fallback.className = &#x27;w-full h-full bg-gray-300 flex items-center justify-center text-gray-600 rounded&#x27;;
+    fallback.textContent = &#x27;Image Not Available&#x27;;
+    parent.appendChild(fallback);
+  };
+
+  return (
+    &lt;div className={`min-h-screen ${theme === &#x27;dark&#x27; ? &#x27;bg-gray-900 text-white&#x27; : &#x27;bg-gray-100 text-gray-800&#x27;}`}&gt;
+      &lt;header className=&quot;bg-blue-600 text-white py-4 sticky top-0 z-50&quot;&gt;
+        &lt;div className=&quot;container mx-auto px-4 flex justify-between items-center&quot;&gt;
+          &lt;h1 className=&quot;text-2xl font-bold&quot;&gt;{name}&lt;/h1&gt;
+          &lt;div className=&quot;flex items-center space-x-4&quot;&gt;
+            &lt;button className=&quot;theme-button text-xl&quot; aria-label=&quot;Toggle theme&quot;&gt;
+              &lt;i className={`fas ${theme === &#x27;light&#x27; ? &#x27;fa-moon&#x27; : &#x27;fa-sun&#x27;}`}&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;main className=&quot;container mx-auto px-4 py-8&quot;&gt;
+        &lt;section id=&quot;profile&quot; className=&quot;mb-12&quot;&gt;
+          &lt;div className=&quot;bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg&quot;&gt;
+            &lt;h2 className=&quot;text-3xl font-bold mb-4 text-center&quot;&gt;About Me&lt;/h2&gt;
+            &lt;div className=&quot;flex flex-col md:flex-row items-center gap-6&quot;&gt;
+              {profilePic ? (
+                &lt;img
+                  src={profilePic}
+                  alt=&quot;Profile&quot;
+                  className=&quot;w-32 h-32 rounded-full object-cover border-4 border-blue-500&quot;
+                  onError={e =&gt; handleImageError(e, &#x27;profile&#x27;)}
+                /&gt;
+              ) : (
+                &lt;div className=&quot;w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center text-gray-600&quot;&gt;No Image&lt;/div&gt;
+              )}
+              &lt;div className=&quot;text-center md:text-left&quot;&gt;
+                &lt;h3 className=&quot;text-2xl font-semibold mb-2&quot;&gt;{name}&lt;/h3&gt;
+                &lt;p className=&quot;mb-4&quot;&gt;{bio}&lt;/p&gt;
+                &lt;p&gt;
+                  &lt;strong&gt;Email:&lt;/strong&gt; &lt;a href={`mailto:${email}`} className=&quot;text-blue-500 hover:underline&quot;&gt;{email}&lt;/a&gt; |{&#x27; &#x27;}
+                  &lt;strong&gt;GitHub:&lt;/strong&gt; &lt;a href={github} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-blue-500 hover:underline&quot;&gt;{github.split(&#x27;/&#x27;).pop()}&lt;/a&gt; |{&#x27; &#x27;}
+                  &lt;strong&gt;LinkedIn:&lt;/strong&gt; &lt;a href={linkedin} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-blue-500 hover:underline&quot;&gt;{linkedin.split(&#x27;/&#x27;).pop()}&lt;/a&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;skills&quot; className=&quot;mb-12&quot;&gt;
+          &lt;div className=&quot;bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg&quot;&gt;
+            &lt;h2 className=&quot;text-3xl font-bold mb-4 text-center&quot;&gt;Skills&lt;/h2&gt;
+            &lt;div className=&quot;grid grid-cols-2 md:grid-cols-4 gap-4&quot;&gt;
+              {skills.map((skill, index) =&gt; (
+                &lt;div key={index} className=&quot;bg-gray-100 dark:bg-gray-700 p-3 rounded text-center&quot;&gt;
+                  {skill}
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;projects&quot; className=&quot;mb-12&quot;&gt;
+          &lt;div className=&quot;bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg&quot;&gt;
+            &lt;h2 className=&quot;text-3xl font-bold mb-4 text-center&quot;&gt;Projects&lt;/h2&gt;
+            &lt;div className=&quot;grid grid-cols-1 md:grid-cols-2 gap-6&quot;&gt;
+              {projects.map((project, index) =&gt; (
+                &lt;div key={index} className=&quot;bg-gray-100 dark:bg-gray-700 p-4 rounded-lg&quot;&gt;
+                  {project.image ? (
+                    &lt;img
+                      src={project.image}
+                      alt={project.name}
+                      className=&quot;w-full h-48 object-cover rounded mb-4&quot;
+                      onError={e =&gt; handleImageError(e, &#x27;project&#x27;, index)}
+                    /&gt;
+                  ) : (
+                    &lt;div className=&quot;w-full h-48 bg-gray-300 flex items-center justify-center text-gray-600 mb-4 rounded&quot;&gt;No Image&lt;/div&gt;
+                  )}
+                  &lt;h3 className=&quot;text-xl font-semibold mb-2&quot;&gt;{project.name}&lt;/h3&gt;
+                  &lt;p className=&quot;mb-4&quot;&gt;{project.description}&lt;/p&gt;
+                  &lt;div className=&quot;flex space-x-4&quot;&gt;
+                    {project.link &amp;&amp; (
+                      &lt;a href={project.link} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-blue-500 hover:underline&quot;&gt;View Project&lt;/a&gt;
+                    )}
+                    {project.github &amp;&amp; (
+                      &lt;a href={project.github} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-blue-500 hover:underline&quot;&gt;GitHub&lt;/a&gt;
+                    )}
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;certificates&quot; className=&quot;mb-12&quot;&gt;
+          &lt;div className=&quot;bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg&quot;&gt;
+            &lt;h2 className=&quot;text-3xl font-bold mb-4 text-center&quot;&gt;Certificates&lt;/h2&gt;
+            &lt;div className=&quot;grid grid-cols-1 md:grid-cols-2 gap-6&quot;&gt;
+              {certificates.map((certificate, index) =&gt; (
+                &lt;div key={index} className=&quot;bg-gray-100 dark:bg-gray-700 p-4 rounded-lg&quot;&gt;
+                  {certificate.image ? (
+                    &lt;img
+                      src={certificate.image}
+                      alt={certificate.title}
+                      className=&quot;w-full h-48 object-contain rounded mb-4 bg-white&quot;
+                      onError={e =&gt; handleImageError(e, &#x27;certificate&#x27;, index)}
+                    /&gt;
+                  ) : (
+                    &lt;div className=&quot;w-full h-48 bg-gray-300 flex items-center justify-center text-gray-600 mb-4 rounded&quot;&gt;No Image&lt;/div&gt;
+                  )}
+                  &lt;h3 className=&quot;text-xl font-semibold mb-2&quot;&gt;{certificate.title}&lt;/h3&gt;
+                  &lt;p className=&quot;mb-2&quot;&gt;Date: {certificate.date ? new Date(certificate.date).toLocaleDateString() : &#x27;N/A&#x27;}&lt;/p&gt;
+                  {certificate.credential &amp;&amp; (
+                    &lt;a href={certificate.credential} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-blue-500 hover:underline&quot;&gt;View Credential&lt;/a&gt;
+                  )}
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;contact&quot; className=&quot;mb-12&quot;&gt;
+          &lt;div className=&quot;bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center&quot;&gt;
+            &lt;h2 className=&quot;text-3xl font-bold mb-4&quot;&gt;Contact Me&lt;/h2&gt;
+            &lt;div className=&quot;flex justify-center space-x-6 mb-4&quot;&gt;
+              &lt;a href={whatsapp} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-2xl text-blue-500 hover:text-blue-700&quot;&gt;
+                &lt;i className=&quot;fab fa-whatsapp&quot;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+              &lt;a href={github} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-2xl text-blue-500 hover:text-blue-700&quot;&gt;
+                &lt;i className=&quot;fab fa-github&quot;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+              &lt;a href={`mailto:${email}`} className=&quot;text-2xl text-blue-500 hover:text-blue-700&quot;&gt;
+                &lt;i className=&quot;fas fa-envelope&quot;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+              &lt;a href={linkedin} target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; className=&quot;text-2xl text-blue-500 hover:text-blue-700&quot;&gt;
+                &lt;i className=&quot;fab fa-linkedin&quot;&gt;&lt;/i&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;p&gt;Feel free to reach out for opportunities or collaborations!&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/main&gt;
+
+      &lt;footer className=&quot;bg-blue-600 text-white py-4&quot;&gt;
+        &lt;div className=&quot;container mx-auto px-4 text-center&quot;&gt;
+          &lt;p&gt;© {new Date().getFullYear()} {name}. All rights reserved.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;
+  );
+}
+
+
+it is onr the templete based on it get 5 to templetes code with out changing the functional working
+but change the styling,animation,colours, in the templetes and get 5 to 10 templetes codes </p><p class="flex flex-col sm:flex-row gap-2 justify-center md:justify-start"><span><strong>Email:</strong> <a href="mailto:dussauday469@gmail.com" class="text-blue-500 hover:underline">dussauday469@gmail.com</a></span><span><strong>GitHub:</strong> <a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline"></a></span><span><strong>LinkedIn:</strong> <a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline"></a></span></p></div></div></div></section><section id="skills" class="mb-12" style="opacity:0;transform:translateY(50px)"><div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl"><h2 class="text-3xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">Skills</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">JavaScript</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">Node.js</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">PostgreSQL</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">Django</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">Angular</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">Redux</div><div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg text-center hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors duration-200">Babel</div></div></div></section><section id="projects" class="mb-12" style="opacity:0;transform:translateY(50px)"><div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl"><h2 class="text-3xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">Projects</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transform hover:scale-[1.02] transition-transform duration-300" style="opacity:0"><img src="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240747/portfolios/vnz9gomcn127iajcnkag.jpg" alt="hello" class="w-full h-48 object-cover rounded-lg mb-4"/><h3 class="text-xl font-semibold mb-2">hello</h3><p class="mb-4 text-gray-600 dark:text-gray-300">https://chat.deepseek.com/</p><div class="flex space-x-4"><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">View Project</a><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">GitHub</a></div></div></div></div></section><section id="certificates" class="mb-12" style="opacity:0;transform:translateY(50px)"><div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl"><h2 class="text-3xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">Certificates</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg transform hover:scale-[1.02] transition-transform duration-300" style="opacity:0"><img src="https://res.cloudinary.com/drc8bufjn/image/upload/v1750240771/portfolios/cly8eahijvlbhk0vhrhj.jpg" alt="hello" class="w-full h-48 object-contain rounded-lg mb-4 bg-white dark:bg-gray-800"/><h3 class="text-xl font-semibold mb-2">hello</h3><p class="mb-2 text-gray-600 dark:text-gray-300">Date: <!-- -->3/21/2004</p></div></div></div></section><section id="contact" class="mb-12" style="opacity:0;transform:translateY(50px)"><div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl text-center"><h2 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">Contact Me</h2><div class="flex justify-center space-x-6 mb-4"><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-3xl text-blue-500 hover:text-blue-700 transition-colors duration-200"><i class="fab fa-whatsapp"></i></a><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-3xl text-blue-500 hover:text-blue-700 transition-colors duration-200"><i class="fab fa-github"></i></a><a href="mailto:dussauday469@gmail.com" class="text-3xl text-blue-500 hover:text-blue-700 transition-colors duration-200"><i class="fas fa-envelope"></i></a><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-3xl text-blue-500 hover:text-blue-700 transition-colors duration-200"><i class="fab fa-linkedin"></i></a></div><p class="text-gray-600 dark:text-gray-300">Feel free to reach out for opportunities or collaborations!</p></div></section></main><footer class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4" style="opacity:0"><div class="container mx-auto px-4 text-center"><p>© <!-- -->2025<!-- --> <!-- -->hello<!-- -->. All rights reserved.</p></div></footer></div>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const themeButton = document.querySelector('.theme-button');
+              if (themeButton) {
+                themeButton.addEventListener('click', () => {
+                  document.body.classList.toggle('dark');
+                  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+                });
+              }
+            });
+          </script>
+        </body>
+        </html>
+      
